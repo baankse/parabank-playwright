@@ -1,0 +1,31 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  await page.goto('https://parabank.parasoft.com/parabank/');
+  await page.locator('input[name="username"]').click();
+  await page.locator('input[name="username"]').fill('john');
+  await page.locator('input[name="password"]').click();
+  await page.locator('input[name="password"]').fill('demo');
+  await page.getByRole('button', { name: 'Log In' }).click();
+  await page.getByRole('link', { name: 'Bill Pay' }).click();
+  await page.locator('input[name="payee.name"]').click();
+  await page.locator('input[name="payee.name"]').fill('banks');
+  await page.locator('input[name="payee.address.street"]').click();
+  await page.locator('input[name="payee.address.street"]').fill('ondo');
+  await page.locator('input[name="payee.address.city"]').click();
+  await page.locator('input[name="payee.address.city"]').fill('akure');
+  await page.locator('input[name="payee.address.state"]').click();
+  await page.locator('input[name="payee.address.state"]').fill('becjk');
+  await page.getByRole('cell').filter({ hasText: /^$/ }).nth(4).click();
+  await page.locator('input[name="payee.address.zipCode"]').fill('100342');
+  await page.locator('input[name="payee.phoneNumber"]').click();
+  await page.locator('input[name="payee.phoneNumber"]').fill('09034567862');
+  await page.locator('input[name="payee.accountNumber"]').click();
+  await page.locator('input[name="payee.accountNumber"]').fill('0123456787');
+  await page.locator('input[name="verifyAccount"]').click();
+  await page.locator('input[name="verifyAccount"]').fill('0123456787');
+  await page.locator('input[name="amount"]').click();
+  await page.locator('input[name="amount"]').fill('20');
+  await page.getByRole('button', { name: 'Send Payment' }).click();
+  await page.getByRole('link', { name: 'Accounts Overview' }).click();
+});

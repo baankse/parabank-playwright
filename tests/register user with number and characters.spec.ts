@@ -1,0 +1,35 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  await page.goto('https://parabank.parasoft.com/parabank/');
+  await page.getByRole('link', { name: 'Register' }).click();
+  await page.locator('[id="customer.firstName"]').click();
+  await page.locator('[id="customer.firstName"]').fill('1234');
+  await page.locator('[id="customer.lastName"]').click();
+  await page.locator('[id="customer.lastName"]').fill('12341');
+  await page.locator('[id="customer.address.street"]').click();
+  await page.locator('[id="customer.address.street"]').fill('1234');
+  await page.locator('[id="customer.lastName"]').click();
+  await page.locator('[id="customer.address.street"]').fill('123');
+  await page.locator('[id="customer.lastName"]').fill('1234');
+  await page.locator('[id="customer.address.street"]').click();
+  await page.locator('[id="customer.address.street"]').fill('1234');
+  await page.locator('[id="customer.address.city"]').click();
+  await page.locator('[id="customer.address.street"]').fill('12341');
+  await page.locator('[id="customer.address.city"]').fill('1234');
+  await page.locator('[id="customer.address.state"]').click();
+  await page.locator('[id="customer.address.state"]').fill('1');
+  await page.locator('[id="customer.address.zipCode"]').click();
+  await page.locator('[id="customer.address.zipCode"]').fill('.');
+  await page.locator('[id="customer.phoneNumber"]').click();
+  await page.locator('[id="customer.phoneNumber"]').fill('.');
+  await page.locator('[id="customer.ssn"]').click();
+  await page.locator('[id="customer.ssn"]').fill('1');
+  await page.locator('[id="customer.username"]').click();
+  await page.locator('[id="customer.username"]').fill('10');
+  await page.locator('[id="customer.password"]').click();
+  await page.locator('[id="customer.password"]').fill('1');
+  await page.locator('#repeatedPassword').click();
+  await page.locator('#repeatedPassword').fill('1');
+  await page.getByRole('button', { name: 'Register' }).click();
+});
